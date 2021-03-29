@@ -13,8 +13,12 @@ class WriteCsv:
             response = requests.get(self.driver.current_url, timeout=50)
             soup = BeautifulSoup(response.content, 'html.parser')
             for each_div in soup.find_all('div', {"class": "data-row-top"}):
-                company = each_div.find('a')
-                writer.writerow([company.text.strip(), company['href']])
+                try:
+                    company = each_div.find('a')
+                    writer.writerow([company.text.strip(), company['href']])
+                except AttributeError:
+                    print('All the companies are scraped')
+
 
     # Write drug name, generic_name, drug_strength, drug_type in csv file
     def write_drugs(self):

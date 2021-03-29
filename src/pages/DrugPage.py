@@ -12,7 +12,7 @@ class DrugPage(BasePage):
     has_next = True
 
     def get_companies(self):
-        with open('output.csv') as csv_file:
+        with open('output.csv', encoding='cp1252') as csv_file:
             csv_reader = csv.reader(csv_file, delimiter=',')
             line_count = 0
             for row in csv_reader:
@@ -31,7 +31,7 @@ class DrugPage(BasePage):
             print(f'{self.has_next}')
         except NoSuchElementException:
             self.has_next = False
-            print(f' We are eng of the pagination, Getting back to another company')
+            print(f'We are eng of the pagination, Getting back to another company')
 
     def __get_all_drugs(self):
         WriteCsv.write_drugs(self)

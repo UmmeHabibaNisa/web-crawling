@@ -11,7 +11,7 @@ class PythonOrgSearch(unittest.TestCase):
     def setUp(self):
         options = Options()
         options.add_argument("--start-maximized")
-        self.driver = webdriver.Chrome(chrome_options=options, executable_path='F:/testing/chromedriver.exe')
+        self.driver = webdriver.Chrome(chrome_options=options, executable_path='/home/nisa/chromedriver')
         self.driver.get("https://medex.com.bd/companies")
 
     # start seach in medex
